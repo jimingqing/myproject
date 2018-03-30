@@ -1,0 +1,14 @@
+
+//·ÖÒ³µÄÌø×ª
+function turnPage(obj,page)
+{
+
+var parentObj=getParentByTagName(obj,"form");
+parentObj.currentPage.value=page;
+parentObj.submit();
+}
+
+function jumpPage(obj)
+{
+getParentByTagName(obj,"form").submit();
+}

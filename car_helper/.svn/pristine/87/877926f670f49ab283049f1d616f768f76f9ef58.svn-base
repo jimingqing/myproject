@@ -1,0 +1,345 @@
+package com.yrtech.wx.capp.portal.model;
+// default package
+
+import static javax.persistence.GenerationType.IDENTITY;
+
+import java.sql.Timestamp;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+/**
+ * OrderLog entity. @author MyEclipse Persistence Tools
+ */
+@Entity
+@Table(name = "order_log", uniqueConstraints = @UniqueConstraint(columnNames = {
+		"mer_id", "ord_id" }))
+public class OrderLog implements java.io.Serializable {
+
+	// Fields
+
+	private Integer id;
+	private Integer merId;
+	private String ordId;
+//	private Integer payUserId;
+	private Integer recUserId;
+	private String recUserPhone;
+	private Double ordAmt;
+	private Double actAmt;
+	private String ordState;
+	private String ordOrg;
+	private String liqState;
+	private Timestamp createTime;
+	private String bankDate;
+	private String bankRespMsg;
+	private String bankRespCode;
+	private String chkFlag;
+	private String resv;
+	private String acctNo;
+	private String acctName;
+	private String bankName;
+	private String userCode;
+	private Integer qryCnt;
+	private String shipState;
+	private String shipNo;
+	private String logtCode;
+	private UserInfo userInfo;
+
+	// Constructors
+
+	/** default constructor */
+	public OrderLog() {
+	}
+
+	/** minimal constructor */
+	public OrderLog(Integer merId, String ordId, Double ordAmt, Double actAmt,
+			String ordState, String ordOrg, String liqState,
+			Timestamp createTime) {
+		this.merId = merId;
+		this.ordId = ordId;
+		this.ordAmt = ordAmt;
+		this.actAmt = actAmt;
+		this.ordState = ordState;
+		this.ordOrg = ordOrg;
+		this.liqState = liqState;
+		this.createTime = createTime;
+	}
+
+	/** full constructor */
+	public OrderLog(Integer merId, String ordId,
+			Integer recUserId, String recUserPhone, Double ordAmt,
+			Double actAmt, String ordState, String ordOrg, String liqState,
+			Timestamp createTime, String bankDate, String bankRespMsg,
+			String bankRespCode, String chkFlag, String resv, String acctNo,
+			String acctName, String bankName, String userCode, Integer qryCnt,
+			String shipState, String shipNo, String logtCode) {
+		this.merId = merId;
+		this.ordId = ordId;
+		this.recUserId = recUserId;
+		this.recUserPhone = recUserPhone;
+		this.ordAmt = ordAmt;
+		this.actAmt = actAmt;
+		this.ordState = ordState;
+		this.ordOrg = ordOrg;
+		this.liqState = liqState;
+		this.createTime = createTime;
+		this.bankDate = bankDate;
+		this.bankRespMsg = bankRespMsg;
+		this.bankRespCode = bankRespCode;
+		this.chkFlag = chkFlag;
+		this.resv = resv;
+		this.acctNo = acctNo;
+		this.acctName = acctName;
+		this.bankName = bankName;
+		this.userCode = userCode;
+		this.qryCnt = qryCnt;
+		this.shipState = shipState;
+		this.shipNo = shipNo;
+		this.logtCode = logtCode;
+	}
+
+	// Property accessors
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
+	public Integer getId() {
+		return this.id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	@Column(name = "mer_id", nullable = false)
+	public Integer getMerId() {
+		return this.merId;
+	}
+
+	public void setMerId(Integer merId) {
+		this.merId = merId;
+	}
+
+	@Column(name = "ord_id", nullable = false, length = 20)
+	public String getOrdId() {
+		return this.ordId;
+	}
+
+	public void setOrdId(String ordId) {
+		this.ordId = ordId;
+	}
+
+	/*@Column(name = "pay_user_id")
+	public Integer getPayUserId() {
+		return this.payUserId;
+	}
+
+	public void setPayUserId(Integer payUserId) {
+		this.payUserId = payUserId;
+	}*/
+
+	@Column(name = "rec_user_id")
+	public Integer getRecUserId() {
+		return this.recUserId;
+	}
+
+	public void setRecUserId(Integer recUserId) {
+		this.recUserId = recUserId;
+	}
+
+	@Column(name = "rec_user_phone", length = 11)
+	public String getRecUserPhone() {
+		return this.recUserPhone;
+	}
+
+	public void setRecUserPhone(String recUserPhone) {
+		this.recUserPhone = recUserPhone;
+	}
+
+	@Column(name = "ord_amt", nullable = false, precision = 10)
+	public Double getOrdAmt() {
+		return this.ordAmt;
+	}
+
+	public void setOrdAmt(Double ordAmt) {
+		this.ordAmt = ordAmt;
+	}
+
+	@Column(name = "act_amt", nullable = false, precision = 10)
+	public Double getActAmt() {
+		return this.actAmt;
+	}
+
+	public void setActAmt(Double actAmt) {
+		this.actAmt = actAmt;
+	}
+
+	@Column(name = "ord_state", nullable = false, length = 1)
+	public String getOrdState() {
+		return this.ordState;
+	}
+
+	public void setOrdState(String ordState) {
+		this.ordState = ordState;
+	}
+
+	@Column(name = "ord_org", nullable = false, length = 1)
+	public String getOrdOrg() {
+		return this.ordOrg;
+	}
+
+	public void setOrdOrg(String ordOrg) {
+		this.ordOrg = ordOrg;
+	}
+
+	@Column(name = "liq_state", nullable = false, length = 1)
+	public String getLiqState() {
+		return this.liqState;
+	}
+
+	public void setLiqState(String liqState) {
+		this.liqState = liqState;
+	}
+
+	@Column(name = "create_time", nullable = false, length = 19)
+	public Timestamp getCreateTime() {
+		return this.createTime;
+	}
+
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
+	}
+
+	@Column(name = "bank_date", length = 14)
+	public String getBankDate() {
+		return this.bankDate;
+	}
+
+	public void setBankDate(String bankDate) {
+		this.bankDate = bankDate;
+	}
+
+	@Column(name = "bank_resp_msg", length = 100)
+	public String getBankRespMsg() {
+		return this.bankRespMsg;
+	}
+
+	public void setBankRespMsg(String bankRespMsg) {
+		this.bankRespMsg = bankRespMsg;
+	}
+
+	@Column(name = "bank_resp_code", length = 10)
+	public String getBankRespCode() {
+		return this.bankRespCode;
+	}
+
+	public void setBankRespCode(String bankRespCode) {
+		this.bankRespCode = bankRespCode;
+	}
+
+	@Column(name = "chk_flag", length = 1)
+	public String getChkFlag() {
+		return this.chkFlag;
+	}
+
+	public void setChkFlag(String chkFlag) {
+		this.chkFlag = chkFlag;
+	}
+
+	@Column(name = "resv", length = 300)
+	public String getResv() {
+		return this.resv;
+	}
+
+	public void setResv(String resv) {
+		this.resv = resv;
+	}
+
+	@Column(name = "acct_no", length = 50)
+	public String getAcctNo() {
+		return this.acctNo;
+	}
+
+	public void setAcctNo(String acctNo) {
+		this.acctNo = acctNo;
+	}
+
+	@Column(name = "acct_name", length = 50)
+	public String getAcctName() {
+		return this.acctName;
+	}
+
+	public void setAcctName(String acctName) {
+		this.acctName = acctName;
+	}
+
+	@Column(name = "bank_name", length = 50)
+	public String getBankName() {
+		return this.bankName;
+	}
+
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
+	}
+
+	@Column(name = "user_code", length = 20)
+	public String getUserCode() {
+		return this.userCode;
+	}
+
+	public void setUserCode(String userCode) {
+		this.userCode = userCode;
+	}
+
+	@Column(name = "qry_cnt")
+	public Integer getQryCnt() {
+		return this.qryCnt;
+	}
+
+	public void setQryCnt(Integer qryCnt) {
+		this.qryCnt = qryCnt;
+	}
+
+	@Column(name = "ship_state", length = 1)
+	public String getShipState() {
+		return this.shipState;
+	}
+
+	public void setShipState(String shipState) {
+		this.shipState = shipState;
+	}
+
+	@Column(name = "ship_no", length = 50)
+	public String getShipNo() {
+		return this.shipNo;
+	}
+
+	public void setShipNo(String shipNo) {
+		this.shipNo = shipNo;
+	}
+
+	@Column(name = "logt_code", length = 10)
+	public String getLogtCode() {
+		return this.logtCode;
+	}
+
+	public void setLogtCode(String logtCode) {
+		this.logtCode = logtCode;
+	}
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="pay_user_id",unique=true)
+	public UserInfo getUserInfo() {
+		return userInfo;
+	}
+
+	public void setUserInfo(UserInfo userInfo) {
+		this.userInfo = userInfo;
+	}
+}

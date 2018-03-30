@@ -1,0 +1,14 @@
+.Wdate{
+	border:#999 1px solid;
+	height:25px;
+	background:#fff url(date.jpg) no-repeat right;
+	font-size:14px;
+	padding: 2px 5px;
+	line-height: 22px;
+}
+.Wdate::-ms-clear{display:none;}
+
+.WdateFmtErr{
+	font-weight:bold;
+	color:red;
+}

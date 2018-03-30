@@ -1,0 +1,119 @@
+package com.yrtech.wx.capp.framework.core.paging;
+
+/**
+ * 分页类
+ * @Package: com.market.portal.commons
+ * @ClassName: Pager.java
+ * @author: wanghui
+ * @date： 2012-8-12 上午10:07:11
+ * @version 1.0
+ */
+public class Pager {
+
+	/** 总记录数 */
+	private int totalRows; 
+	/** 每页记录数 */
+	private int pageSize = 3; 
+    /** 当前页 */
+    private int currentPage; 
+    /** 总页数  */
+    private int totalPages; 
+    /** 每页首行记录数 */
+    private int startRow; 
+    
+    public Pager() {
+    }
+    
+    public Pager(int _totalRows) {
+        totalRows = _totalRows;
+        totalPages=totalRows/pageSize;
+        int mod=totalRows%pageSize;
+        if(mod>0){
+            totalPages++;
+        }
+        currentPage = 1;
+        startRow = 0;
+    }
+    
+    /*public int getStartRow() {
+        return startRow;
+    }*/
+    public int getTotalPages() {
+    	totalPages=totalRows/pageSize;
+        int mod=totalRows%pageSize;
+        if(mod>0){
+            totalPages++;
+        }
+        return totalPages;
+    }
+    public int getCurrentPage() {
+        return currentPage;
+    }
+    public int getPageSize() {
+        return pageSize;
+    }
+    public void setTotalRows(int totalRows) {
+        this.totalRows = totalRows;
+    }
+    public void setStartRow(int startRow) {
+        this.startRow = startRow;
+    }
+    public void setTotalPages(int totalPages) {
+        this.totalPages = totalPages;
+    }
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
+    }
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+    public int getTotalRows() {
+        return totalRows;
+    }
+    public void first() {
+        currentPage = 1;
+        startRow = 0;
+    }
+    public void previous() {
+        if (currentPage == 1) {
+            return;
+        }
+        currentPage--;
+        startRow = (currentPage - 1) * pageSize;
+    }
+    public void next() {
+        if (currentPage < totalPages) {
+            currentPage++;
+        }
+        startRow = (currentPage - 1) * pageSize;
+    }
+    public void last() {
+        currentPage = totalPages;
+        startRow = (currentPage - 1) * pageSize;
+    }
+    public void refresh(int _currentPage) {
+        currentPage = _currentPage;
+        if (currentPage > totalPages) {
+            last();
+        }
+    }
+    
+    /*public int getStartRow(int _currentPage){
+    	startRow = (_currentPage - 1) * pageSize;
+    	return startRow;
+    }*/
+    
+    public int getStartRow(){
+    	startRow = (currentPage - 1) * pageSize;
+    	return startRow;
+    }
+    
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,30 @@
+### Use two appenders, one to log to console, another to log to a file
+#log4j.rootCategory=DEBUG, stdout, debugout, R, R2
+log4j.rootCategory=INFO,stdout
+#log4j.rootCategory=DEBUG, debugout, R, R2,stdout
+
+#log4j.logger.org=INFO
+#log4j.logger.sitech=INFO
+
+
+#### First appender writes to console
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%-5.5p:%d [ %c - %L ] - %m%n
+
+
+#### Second appender writes to a file
+log4j.appender.R=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.R.File=d\:\\log\\selfApp\\selfApp_info.log
+log4j.appender.R.Append=true
+log4j.appender.R.Threshold=INFO
+log4j.appender.R.DatePattern='.'yyyy-MM-dd
+log4j.appender.R.layout=org.apache.log4j.PatternLayout
+log4j.appender.R.layout.ConversionPattern=%5p:%d - %m%n
+
+#log4j.appender.stdout.Threshold=trace  
+#log4j.category.org.hibernate.SQL=trace  
+#log4j.category.org.hibernate.type=trace  
+#log4j.logger.org.hibernate.type=info
+#log4j.logger.org.hibernate.tool.hbm2ddl=debug
+

@@ -1,0 +1,18 @@
+//得到tag名为tagName的父对象
+function getParentByTagName(obj, tagName)
+{
+    var parentObj = obj;
+    while (parentObj != null)
+    {
+        if (parentObj.tagName.toLowerCase() == tagName.toLowerCase())
+        {
+            if (parentObj.readyState == "complete")
+            {
+                return parentObj;
+            }
+            break;
+        }
+        parentObj = parentObj.parentElement;
+    }
+    return null;
+}

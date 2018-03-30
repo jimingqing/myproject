@@ -1,0 +1,15 @@
+//div说明框是否显示 otr div的id名称 bshow true
+function DisplaySwitch(otr, bshow)
+	{
+		if (bshow)
+			otr.style.display = "block";
+		else
+			otr.style.display = "none";
+		return false;
+}
+
+  function selectall(frm, v) {
+    var e = document.forms[frm];
+    for (var i=0;i<e.elements.length;i++) e.elements[i].checked = v;
+  }//select all mail
+

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<!-- 打开注解方式 -->
+	<context:annotation-config />
+	
+	<context:component-scan base-package="com.yrtech.wx.capp.portal.model" />
+	
+	<!-- 配置占位符 -->
+	<bean id="placeholderConfig"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:jdbc.properties</value>
+		</property>
+	</bean>
+		<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName">
+			<value>${jdbc.driverClassName}</value>
+		</property>
+		<property name="url">
+			<value>${jdbc.url}</value>
+		</property>
+		<property name="username">
+			<value>${jdbc.username}</value>
+		</property>
+		<property name="password">
+			<value>${jdbc.password}</value>
+		</property>
+	</bean>
+	
+	<!-- SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.jdbc.batch_size">20</prop>
+			</props>
+		</property>
+		<property name="packagesToScan">
+			<list>
+				<value>com.yrtech.wx.capp.portal.model</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!--上线时需要改成JNDI的配置-->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean> 
+	
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<!--采用注解来管理Bean -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+	<aop:config>
+        <!-- 只对业务逻辑层实施事务 -->
+        <aop:pointcut id="bussinessService" expression="execution(* com.yrtech.wx.capp.portal.service.*.*(..))" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="bussinessService"/>
+    </aop:config> 
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="save*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="batchSave*" propagation="REQUIRED" />
+            <tx:method name="add*" propagation="REQUIRED" />
+            <tx:method name="create*" propagation="REQUIRED" />
+            <tx:method name="insert*" propagation="REQUIRED" />
+            <tx:method name="update*" propagation="REQUIRED" />
+            <tx:method name="merge*" propagation="REQUIRED" />
+            <tx:method name="del*" propagation="REQUIRED" />
+            <tx:method name="remove*" propagation="REQUIRED" />
+            <tx:method name="put*" propagation="REQUIRED" />
+            <tx:method name="use*" propagation="REQUIRED"/>
+            <!--hibernate4必须配置为开启事务 否则 getCurrentSession()获取不到-->
+            <tx:method name="get*" propagation="REQUIRED" read-only="true" />
+            <tx:method name="count*" propagation="REQUIRED" read-only="true" />
+            <tx:method name="find*" propagation="REQUIRED" read-only="true" />
+            <tx:method name="list*" propagation="REQUIRED" read-only="true" />
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+    
+    <!-- 泛型dao对象 -->
+    <bean id="genericDao" class="com.yrtech.wx.capp.portal.dao.impl.GenericDaoImpl" abstract="true">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory"/>
+        </property>
+    </bean> 
+    
+    <!-- dao对象 -->
+    <bean id="merInfoDao" class="com.yrtech.wx.capp.portal.dao.impl.MerInfoDao" parent="genericDao">
+    </bean>
+    <bean id="merOperInfoDao" class="com.yrtech.wx.capp.portal.dao.impl.MerOperInfoDao" parent="genericDao">
+    </bean>
+    <bean id="userInfoDao" class="com.yrtech.wx.capp.portal.dao.impl.UserInfoDao" parent="genericDao">
+    </bean>
+    <bean id="smsLogDao" class="com.yrtech.wx.capp.portal.dao.impl.SmsLogDao" parent="genericDao">
+    </bean>
+    <bean id="orderLogDao" class="com.yrtech.wx.capp.portal.dao.impl.OrderLogDao" parent="genericDao">
+    </bean>
+    <bean id="orderItemDao" class="com.yrtech.wx.capp.portal.dao.impl.OrderItemDao" parent="genericDao">
+    </bean>
+    <bean id="bankInfoDao" class="com.yrtech.wx.capp.portal.dao.impl.BankInfoDao" parent="genericDao">
+    </bean>
+    <bean id="userBankRelDao" class="com.yrtech.wx.capp.portal.dao.impl.UserBankRelDao" parent="genericDao">
+    </bean>
+    <bean id="userLimitDao" class="com.yrtech.wx.capp.portal.dao.impl.UserLimitDao" parent="genericDao">
+    </bean>
+    <bean id="authInfoDao" class="com.yrtech.wx.capp.portal.dao.impl.AuthInfoDao" parent="genericDao">
+    </bean>
+    <bean id="grpAuthInfoDao" class="com.yrtech.wx.capp.portal.dao.impl.GrpAuthInfoDao" parent="genericDao">
+    </bean>
+    <bean id="goodsDao" class="com.yrtech.wx.capp.portal.dao.impl.GoodsDao" parent="genericDao">
+    </bean>
+    <bean id="goodsCatDao" class="com.yrtech.wx.capp.portal.dao.impl.GoodsCatDao" parent="genericDao">
+    </bean>
+    <bean id="goodsImgDao" class="com.yrtech.wx.capp.portal.dao.impl.GoodsImgDao" parent="genericDao">
+    </bean>
+    <bean id="provCityDao" class="com.yrtech.wx.capp.portal.dao.impl.ProvCityDao" parent="genericDao">
+    </bean>
+    <bean id="handleAuditLogDao" class="com.yrtech.wx.capp.portal.dao.impl.HandleAuditLogDao" parent="genericDao">
+    </bean>
+    <bean id="merAcctSumLogDao" class="com.yrtech.wx.capp.portal.dao.impl.MerAcctSumLogDao" parent="genericDao">
+    </bean>
+    <bean id="userAcctSumLogDao" class="com.yrtech.wx.capp.portal.dao.impl.UserAcctSumLogDao" parent="genericDao">
+    </bean>
+    <bean id="logisticsCorpDao" class="com.yrtech.wx.capp.portal.dao.impl.LogisticsCorpDao" parent="genericDao">
+    </bean>
+    
+    <!-- 业务对象 -->
+    <bean id="userInfoSrv" class="com.yrtech.wx.capp.portal.service.UserInfoSrv">
+    </bean>
+    <bean id="authInfoSrv" class="com.yrtech.wx.capp.portal.service.AuthInfoSrv">
+    </bean> 
+    <bean id="goodsSrv" class="com.yrtech.wx.capp.portal.service.GoodsSrv">
+    </bean>
+    <bean id="orderLogSrv" class="com.yrtech.wx.capp.portal.service.OrderLogSrv">
+    </bean> 
+    <bean id="bankInfoSrv" class="com.yrtech.wx.capp.portal.service.BankInfoSrv">
+    </bean>
+    <bean id="userBankRelSrv" class="com.yrtech.wx.capp.portal.service.UserBankRelSrv">
+    </bean>
+    <bean id="userLimitSrv" class="com.yrtech.wx.capp.portal.service.UserLimitSrv">
+    </bean>
+    <bean id="provCitySrv" class="com.yrtech.wx.capp.portal.service.ProvCitySrv">
+    </bean>
+    <bean id="merInfoSrv" class="com.yrtech.wx.capp.portal.service.MerInfoSrv">
+    </bean>
+    <bean id="handleAuditSrv" class="com.yrtech.wx.capp.portal.service.HandleAuditSrv">
+    </bean>
+    <bean id="acctSumLogSrv" class="com.yrtech.wx.capp.portal.service.AcctSumLogSrv">
+    </bean>
+
+</beans>

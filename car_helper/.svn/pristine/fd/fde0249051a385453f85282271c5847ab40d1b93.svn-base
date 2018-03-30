@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="ah_ysfmp"
+  id="myeclipse.1391322667717"
+  context-root="/ysfmp"
+  j2ee-spec="6.0"
+  archive="ah_ysfmp.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

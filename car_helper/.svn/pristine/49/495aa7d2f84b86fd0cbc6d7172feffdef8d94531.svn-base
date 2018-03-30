@@ -1,0 +1,165 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>结果</title>
+<link href="css/css0.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="js/float.js"></script>
+
+</head>
+
+<body leftmargin="0" topmargin="0">
+<table border="0" cellspacing="4" cellpadding="0" width="70%" style="margin:0px 0px 0px 12px;">
+  <tr>
+    <td valign="top" style="width:100%;"><table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="9" align="left" valign="top"><img src="images/right_yellow_top_left.gif" width="9" height="25" /></td>
+        <td width="1019" align="center" valign="bottom" background="images/right_yellow_top_background.gif" class="black_blod"><!--查询标题开始-->
+          <span class="STYLE1">银行交易信息标志指南</span>          <!--查询标题结束-->        </td>
+        <td width="10" align="right" valign="top"><img src="images/right_yellow_top_right.gif" width="10" height="25" /></td>
+      </tr>
+      <tr>
+        <td align="right" valign="top" style="background-image:url(images/right_yellow_left_line.gif); background-position:left; background-repeat:repeat-y;">&nbsp;</td>
+        <td align="left" valign="top" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="10" cellpadding="0">
+            <tr>
+              <td valign="top" bgcolor="#FFFFFF"><table border=0 cellspacing="1" cellpadding="0" bgcolor="#C0C9E0" class="List" width="100%" >
+                <tr>
+                  <td colspan="2"><a name="01" id="01"></a><B>一、银行交易应答标志</b>(Recv_Bk_Flag)</td>
+                  </tr>
+                <tr>
+                  <td width="20%">取值</td>
+                  <td width="80%">取值信息。</td>
+                </tr>
+                <tr>
+                  <td>N</td>
+                  <td>正常收到。</td>
+                </tr>
+                <tr>
+                  <td>T</td>
+                  <td>延迟收到，通过当日手工补帐或者对帐完成后强制成功。</td>
+                </tr>
+                <tr>
+                  <td>D</td>
+                  <td>延迟收到，通过隔日的手工补帐或者对帐完成后强制成功，Trans_Stat为’S’。</td>
+                </tr>
+                <tr>
+                  <td>C</td>
+                  <td>延迟收到，通过对帐完成后强制取消，但Trans_Stat仍然为F状态。</td>
+                </tr>
+                <tr>
+                  <td>I</td>
+                  <td>初始状态（未收到应答）。</td>
+                </tr>
+                <tr>
+                  <td colspan="2" align="right"><a href="#01">返回顶部</a></td>
+                  </tr>
+              </table></td>
+              </tr>
+            <tr>
+              <td valign="top" bgcolor="#FFFFFF"><table border=0 cellspacing="1" cellpadding="0" bgcolor="#C0C9E0" class="List" width="100%" >
+                <tr>
+                  <td colspan="2"><a name="02" id="02"></a><strong>二、银行对帐标志(Bk_Chk_Flag)</strong></td>
+                </tr>
+                <tr>
+                  <td width="20%">取值</td>
+                  <td width="80%">取值信息。</td>
+                </tr>
+                <tr>
+                  <td>I</td>
+                  <td>初始状态（未对帐）。</td>
+                </tr>
+                <tr>
+                  <td>S</td>
+                  <td>勾对成功，双方均成功。</td>
+                </tr>
+                <tr>
+                  <td>D</td>
+                  <td>勾对失败，单边交易，银行成功，系统失败，但补帐成功。</td>
+                </tr>
+                <tr>
+                  <td>R</td>
+                  <td>勾对失败，单边交易，银行成功，系统失败，需要退货。</td>
+                </tr>
+                <tr>
+                  <td>C</td>
+                  <td>勾对失败，单边交易，通过对帐完成后强制取消，但Trans_Stat仍然为F状态。</td>
+                </tr>
+                <tr>
+                  <td>A</td>
+                  <td>勾对失败，双方金额不符。</td>
+                </tr>
+                <tr>
+                  <td>Q</td>
+                  <td>勾对失败，银行为可疑交易。</td>
+                </tr>
+                <tr>
+                  <td colspan="2" align="right"><a href="#01">返回顶部</a></td>
+                </tr>
+              </table></td>
+            </tr>
+            <tr>
+              <td valign="top" bgcolor="#FFFFFF"><table border=0 cellspacing="1" cellpadding="0" bgcolor="#C0C9E0" class="List" width="100%" >
+                <tr>
+                  <td colspan="2"><a name="03" id="03"></a><b>三、交易状态</b>（Trans_Stat）</td>
+                </tr>
+                <tr>
+                  <td width="20%">取值</td>
+                  <td width="80%">取值信息。</td>
+                </tr>
+                <tr>
+                  <td>S</td>
+                  <td>成功。</td>
+                </tr>
+                <tr>
+                  <td>F</td>
+                  <td>失败。</td>
+                </tr>
+                <tr>
+                  <td>I</td>
+                  <td>初始状态。</td>
+                </tr>
+
+                <tr>
+                  <td colspan="2" align="right"><a href="#01">返回顶部</a></td>
+                </tr>
+              </table></td>
+            </tr>
+            <tr>
+              <td valign="top" bgcolor="#FFFFFF"><table border=0 cellspacing="1" cellpadding="0" bgcolor="#C0C9E0" class="List" width="100%" >
+                <tr>
+                  <td colspan="2"><a name="04" id="04"></a><b>四、交易类型</B>（Trans_Type）</td>
+                </tr>
+                <tr>
+                  <td width="20%">取值</td>
+                  <td width="80%">取值信息。</td>
+                </tr>
+                <tr>
+                  <td>P</td>
+                  <td>支付。</td>
+                </tr>
+                <tr>
+                  <td>R</td>
+                  <td>退货。</td>
+                </tr>
+                <tr>
+                  <td colspan="2" align="right"><a href="#01">返回顶部</a></td>
+                </tr>
+              </table></td>
+            </tr>
+            <tr>
+              <td valign="top" bgcolor="#FFFFFF"><input type=submit name="close" value=完成 onClick="window.close();"/></td>
+            </tr>
+          </table>
+            <!--查询区域表格开始-->
+            <!--查询区域表格开始--></td>
+        <td align="left" valign="top" style="background-image:url(images/right_yellow_right_line.gif); background-position:right; background-repeat:repeat-y;">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="left" valign="bottom" background="images/right_yellow_bottom_background.gif"><img src="images/right_yellow_bottom_left.gif" width="7" height="6" /></td>
+        <td background="images/right_yellow_bottom_background.gif"></td>
+        <td align="right" valign="top" background="images/right_yellow_bottom_background.gif"><img src="images/right_yellow_bottom_right.gif" width="7" height="6" /></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

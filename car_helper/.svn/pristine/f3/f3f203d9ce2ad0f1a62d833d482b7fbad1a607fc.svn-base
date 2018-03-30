@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>查询条件</title>
+<link href="../ui/css/css.css" rel="stylesheet" type="text/css">
+<link href="../ui/css/css_list.css" rel="stylesheet" type="text/css">
+<script src="../ui/js/CALENDAR.JS"></script>
+</head>
+
+<body leftmargin="0" topmargin="0">
+<table border="0" cellspacing="0" cellpadding="0" width="100%" height="100%">
+<tr>
+	<td valign="top" style="width:100%">
+	
+<table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
+<script language="javascript" src="../ui/js/common.js"></script>
+<script language="javascript" src="../ui/js/bulletin.js"></script>
+<script language="javascript">window.setTimeout( "check_exp();", 0 ) ;</script>
+  <tr>
+    <td width="9" align="left" valign="top"><img src="../ui/images/right_yellow_top_left.gif" width="9" height="25"></td>
+    <td width="1019" align="left" valign="bottom" background="../ui/images/right_yellow_top_background.gif" class="black_blod">
+	
+      <table width="200" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="20">&nbsp;</td>
+          <td width="180" class="black_blod" valign="bottom">查询条件</td>
+        </tr>
+      </table>
+	  
+	  </td>
+    <td width="10" align="left" valign="top"><img src="../ui/images/right_yellow_top_right.gif" width="10" height="25"></td>
+  </tr>
+  <tr>
+    <td align="right" valign="top" style="background-image:url(../ui/images/right_yellow_left_line.gif); background-position:left; background-repeat:repeat-y;">&nbsp;</td>
+    <td height="94" align="left" valign="top" bgcolor="#F0F0F0">
+    <br/>
+
+	<table class="List" width="750" border=0 cellspacing="1" cellpadding="0" align=left>
+		<tr>
+			
+			<td width="100" class="div">条目一</td>
+			<td width="150" class="div">条目二</td>
+			<td width="500" class="div">条目三</td>
+		</tr>
+  
+  <tr>
+    <td width="100" align="center" class="center"><bean:write name="option" property="bulletinDate"/></td>
+    <td width="150" class="center" align="center"><bean:write name="option" property="bulletinTime"/></td>
+    <td width="500" class="center" align="left"><bean:write name="option" property="content"/></td>
+
+  </tr>
+
+</table>
+
+	
+    <td align="left" valign="top" style="background-image:url(../images/right_yellow_right_line.gif); background-position:left; background-repeat:repeat-y;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="left" valign="bottom" background="../ui/images/right_yellow_bottom_background.gif"><img src="../ui/images/right_yellow_bottom_left.gif" width="7" height="6"></td>
+    <td background="../images/right_yellow_bottom_background.gif"></td>
+    <td align="center" valign="top" background="../ui/images/right_yellow_bottom_background.gif"><img src="../ui/images/right_yellow_bottom_right.gif" width="7" height="6"></td>
+  </tr>
+</table>
+
+
+
+	</td>
+</tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<html>
+<head>
+<title>IndoPay Merchant Console</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+.bg {
+	background-color: #FFFFFF;
+	background-image: url(/pay/image/background.gif);
+	background-repeat: repeat-x;
+	background-position: top;
+}
+</style>
+<style type="text/css">
+<!--
+.verdana10px {
+	font-family: Verdana, Arial;
+	font-size: 10px;
+	color: #000000;
+}
+-->
+</style>
+<style type="text/css">
+<!--
+.linedot {
+	border-top-width: 1px;
+	border-top-style: dotted;
+	border-top-color: #CCCCCC;
+}
+-->
+</style>
+</head>
+
+<body leftmargin="0" topmargin="0" class="bg">
+
+<table width="785" height="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="center" valign="top"><table width="730" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td height="90" valign="top" style="padding-left: 10px;padding-right: 10px">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="verdana10px">
+              <tr> 
+                <td width="199" valign="top"><img src="/pay/image/logo.gif"></td>
+                <td width="531" align="right" valign="top" style="padding-top: 25px"><img src="/pay/image/tagline.gif"></td>
+              </tr>
+              <tr>
+                <td height="25" valign="bottom"><strong><font color="#31659E">Instructions</font></strong></td>
+                <td align="right" valign="top">&nbsp;</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+          <td height="120" class="linedot" style="padding-left: 10px"> 
+            <table width="500" border="0" cellpadding="2" cellspacing="1" class="verdana10px">
+              <tr> 
+                <td>
+<h1>Object not found!</h1>                
+<p>
+
+
+    The requested URL was not found on this server.
+
+  
+
+    If you entered the URL manually please check your
+    spelling and try again.
+
+  
+
+</p>
+<p>
+If you think this is a server error, please contact
+the <a href="mailto:support@indopay.com">support</a>.
+
+</p>
+
+<h2>Error 404</h2>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr> 
+            <td height="30" align="center" class="linedot">
+		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="verdana10px">
+                <tr> 
+                  <td align="center" valign="top">Email : support@indopay.com</td>
+                </tr>
+              </table>
+            </td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="Security" namespace="/Security" extends="struts-default">
+		<action name="SecurityCodeImageAction" class="com.yrtech.wx.capp.portal.action.SecurityCodeImageAction">
+			<result name="success" type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">imageStream</param>
+				<param name="bufferSize">1048</param>
+			</result>
+		</action>
+	</package>
+	
+	<package name="admin_page" extends="struts-default" namespace="/admin" >
+		
+		<action name="addAuthPage">
+			<result>/WEB-INF/pages/control/control_addAuth.jsp</result>
+		</action>
+		
+	</package>
+	
+	<package name="console" extends="struts-default,json-default" namespace="/" >
+		
+		<!-- 全局转发映射 -->
+		<global-results>
+			<result type="json" name="success">
+				<param name="root">resultMap</param>
+			</result>
+		</global-results>
+		
+		<action name="operLogin" class="com.yrtech.wx.capp.portal.action.LoginActionn" method="login">
+		</action>
+		
+		<action name="addAuthPage">
+			<result>/WEB-INF/pages/control/control_addAuth.jsp</result>
+		</action>
+		
+	</package>
+	
+</struts>

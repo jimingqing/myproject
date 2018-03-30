@@ -1,0 +1,81 @@
+body,td,th {
+	font-size: 9pt;
+	font-family: sans-serif;
+}
+
+Table.List {
+	cellpading: 0px;
+	cellspacing: 1px;
+	background-color: #c0c9e0;
+	border: 0px;
+}
+
+Table.List Td.div {
+	background: #5f7cbc;
+	color: #ffffff;
+	font-weight: bold;
+	text-align: center;
+	height: 22px;
+}
+
+.div_other {
+	background: #5f7cbc;
+	color: #ffffff;
+	font-weight: bold;
+	text-align: center;
+	height: 22px;
+}
+
+/*
+a {
+	color: #003399;
+	text-decoration: none;
+	border: 1px solid #FFFFFF;
+}
+a:hover {
+	color: #FF0000;
+	background-color: #eeeeee;
+	border: 1px solid #006699;
+}
+*/
+a:hover {
+	font-family: arial, helvetica, sans-serif;
+	color: #ff6600;
+	text-decoration: none;
+}
+
+.button1 {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 11px;
+	color: #003366;
+	text-decoration: none;
+	line-height: 16px;
+}
+
+.btn1 {
+	border-right: #002d96 1px solid;
+	padding-right: 2px;
+	border-top: #002d96 1px solid;
+	padding-left: 2px;
+	font-size: 12px;
+	filter: progid:   dximagetransform.   microsoft.   gradient(gradienttype =   0, startcolorstr =   #ffffff, endcolorstr =   #9dbcea);
+	border-left: #002d96 1px solid;
+	cursor: hand;
+	color: black;
+	padding-top: 2px;
+	border-bottom: #002d96 1px solid;
+}
+
+.btn1_mouseover {
+	border-right: #002d96 1px solid;
+	padding-right: 2px;
+	border-top: #002d96 1px solid;
+	padding-left: 2px;
+	font-size: 12px;
+	filter: progid:   dximagetransform.   microsoft.   gradient(gradienttype =   0, startcolorstr =   #ffffff, endcolorstr =   #9dbcea);
+	border-left: #002d96 1px solid;
+	cursor: hand;
+	color: red;
+	padding-top: 2px;
+	border-bottom: #002d96 1px solid
+}

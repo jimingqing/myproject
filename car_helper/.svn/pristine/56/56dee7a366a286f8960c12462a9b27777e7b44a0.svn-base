@@ -1,0 +1,7 @@
+jdbc.driverClassName=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://112.124.42.245:3306/ysfdb?useUnicode=true&characterEncoding=UTF-8
+#jdbc.url=jdbc:mysql://127.0.0.1:3306/hf_tgdb?useUnicode=true&characterEncoding=UTF-8
+jdbc.username=root
+jdbc.password=7daaac4f30
+#jdbc.password=mysql
+

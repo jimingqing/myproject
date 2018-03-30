@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="common" extends="struts-default,json-default" namespace="/admin">
+	
+		<!-- 登录拦截器
+		<interceptors>
+			<interceptor name="loginInterceptor" class="com.yrtech.wx.capp.portal.interceptors.LogonInterceptor" />
+			<interceptor-stack name="myDefaultInterceptorStack">
+				<interceptor-ref name="loginInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myDefaultInterceptorStack"></default-interceptor-ref>
+		 -->
+		
+		<!-- 全局转发映射 -->
+		<global-results>
+			<result name="login_page">
+				/login.jsp
+			</result>
+			<result name="login_error">
+				/WEB-INF/pages/exception/error.jsp
+			</result>
+			<result name="errorCommon">
+				/WEB-INF/pages/exception/error.jsp
+			</result>
+			<result name="successCommon">
+				/WEB-INF/admin/common/success.jsp
+			</result>
+		</global-results>
+		
+		<!-- 全局异常映射 -->
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception" />
+		</global-exception-mappings>
+		
+		<action name="layout">
+			<result>/WEB-INF/pages/control/control_layout.jsp</result>
+		</action>
+		
+		<action name="error">
+			<result>/WEB-INF/pages/exception/error.jsp</result>
+		</action>
+		
+		<action name="main">
+			<result>/WEB-INF/pages/common/main.jsp</result>
+		</action>
+		
+		<action name="top">
+			<result>/WEB-INF/pages/common/main_top.jsp</result>
+		</action>
+		
+		<action name="menu">
+			<result>/WEB-INF/pages/common/menu.jsp</result>
+		</action>
+		
+		<action name="border">
+			<result>/WEB-INF/pages/common/border.jsp</result>
+		</action>
+		
+		<action name="addAuthPage">
+			<result>/WEB-INF/pages/control/control_addAuth.jsp</result>
+		</action>
+		
+		<action name="addGoodsPage">
+			<result>/WEB-INF/pages/control/control_addGoods.jsp</result>
+		</action>
+		
+		<action name="addGoodsCatPage">
+			<result>/WEB-INF/pages/control/control_addGoodsCat.jsp</result>
+		</action>
+		
+		<action name="qryGoodsPage">
+			<result>/WEB-INF/pages/control/control_qryGoods.jsp</result>
+		</action>
+		
+		<action name="qryGoodsCatPage">
+			<result>/WEB-INF/pages/control/control_qryGoodsCat.jsp</result>
+		</action>
+		
+		<action name="editGoodsCatPage">
+			<result>/WEB-INF/pages/control/control_editGoodsCat.jsp</result>
+		</action>
+		
+		<action name="editGoodsCatDetailPage">
+			<result>/WEB-INF/pages/control/control_editGoodsCatDetail.jsp</result>
+		</action>
+		
+		<action name="editGoodsPage">
+			<result>/WEB-INF/pages/control/control_editGoods.jsp</result>
+		</action>
+		
+		<action name="editGoodsDetailPage">
+			<result>/WEB-INF/pages/control/control_editGoodsDetail.jsp</result>
+		</action>
+		
+		<action name="qryAuthPage">
+			<result>/WEB-INF/pages/control/control_qryAuth.jsp</result>
+		</action>
+		
+		<action name="editAuthPage">
+			<result>/WEB-INF/pages/control/control_editAuth.jsp</result>
+		</action>
+		
+		<action name="editAuthDetailPage">
+			<result>/WEB-INF/pages/control/control_editAuthDetail.jsp</result>
+		</action>
+		
+		<action name="editGrpAuthPage">
+			<result>/WEB-INF/pages/control/control_editGrpAuth.jsp</result>
+		</action>
+		
+		<action name="addMerInfoPage">
+			<result>/WEB-INF/pages/control/control_addMerInfo.jsp</result>
+		</action>
+		
+		<action name="qryMerInfoPage">
+			<result>/WEB-INF/pages/control/control_qryMerInfo.jsp</result>
+		</action>
+		
+		<action name="editMerInfoPage">
+			<result>/WEB-INF/pages/control/control_editMerInfo.jsp</result>
+		</action>
+		
+		<action name="qryMerInfoDetailPage">
+			<result>/WEB-INF/pages/control/control_qryMerInfoDetail.jsp</result>
+		</action>
+		
+		<action name="addMerOperInfoPage">
+			<result>/WEB-INF/pages/control/control_addMerOperInfo.jsp</result>
+		</action>
+		
+		<action name="qryMerOperInfoPage">
+			<result>/WEB-INF/pages/control/control_qryMerOperInfo.jsp</result>
+		</action>
+		
+		<action name="qryUserInfoPage">
+			<result>/WEB-INF/pages/control/control_qryUserInfo.jsp</result>
+		</action>
+		
+		<action name="qryUserInfoDetailPage">
+			<result>/WEB-INF/pages/control/control_qryUserInfoDetail.jsp</result>
+		</action>
+		
+		<action name="addUserInfoPage">
+			<result>/WEB-INF/pages/control/control_addUserInfo.jsp</result>
+		</action>
+		
+		<action name="auditUserInfoDetailPage">
+			<result>/WEB-INF/pages/control/control_auditUserInfoDetail.jsp</result>
+		</action>
+		
+		<action name="editUserInfoPage">
+			<result>/WEB-INF/pages/control/control_editUserInfo.jsp</result>
+		</action>
+		
+		<action name="qryOrderLogPage">
+			<result>/WEB-INF/pages/control/control_qryOrderLog.jsp</result>
+		</action>
+		
+		<action name="qryOrdLogDetailPage">
+			<result>/WEB-INF/pages/control/control_qryOrdLogDetail.jsp</result>
+		</action>
+		
+		<action name="addOrderPage">
+			<result>/WEB-INF/pages/control/control_addOrder.jsp</result>
+		</action>
+		
+		<action name="auditOrderPage">
+			<result>/WEB-INF/pages/control/control_auditOrder.jsp</result>
+		</action>
+		
+		<action name="editUserAcctBalPage">
+			<result>/WEB-INF/pages/control/control_editUserAcctBal.jsp</result>
+		</action>
+		
+		<action name="editMerOperInfoPage">
+			<result>/WEB-INF/pages/control/control_editMerOperInfo.jsp</result>
+		</action>
+		
+		<action name="qryMerOperInfoDetailPage">
+			<result>/WEB-INF/pages/control/control_qryMerOperInfoDetail.jsp</result>
+		</action>
+		
+		<action name="resetOperPwdPage">
+			<result>/WEB-INF/pages/control/control_resetOperPwd.jsp</result>
+		</action>
+		
+		<action name="searchGoodsPage">
+			<result>/WEB-INF/pages/control/control_searchGoods.jsp</result>
+		</action>
+		
+		<action name="reconHandlePage">
+			<result>/WEB-INF/pages/control/control_reconHandle.jsp</result>
+		</action>
+		
+		<action name="merAcctSumPage">
+			<result>/WEB-INF/pages/control/control_merAcctSum.jsp</result>
+		</action>
+		
+		<action name="userAcctSumPage">
+			<result>/WEB-INF/pages/control/control_userAcctSum.jsp</result>
+		</action>
+		
+		<action name="qryUserAcctBalPage">
+			<result>/WEB-INF/pages/control/control_qryUserAcctBal.jsp</result>
+		</action>
+		
+		<action name="qryOrderLogtInfoPage">
+			<result>/WEB-INF/pages/control/control_qryOrderLogtInfo.jsp</result>
+		</action>
+		
+		<action name="orderDeliveryPage">
+			<result>/WEB-INF/pages/control/control_orderDelivery.jsp</result>
+		</action>
+		
+	</package>
+	
+	<package name="Security" namespace="/Security" extends="struts-default">
+		<action name="SecurityCodeImageAction" class="com.yrtech.wx.capp.portal.action.SecurityCodeImageAction">
+			<result name="success" type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">imageStream</param>
+				<param name="bufferSize">1048</param>
+			</result>
+		</action>
+	</package>
+	
+	<package name="main" extends="struts-default,json-default" namespace="/console" >
+		<!-- 全局转发映射 -->
+		<global-results>
+			<result type="json" name="success">
+				<param name="root">resultMap</param>
+			</result>
+		</global-results>
+		
+		<action name="operLogin" class="com.yrtech.wx.capp.portal.action.LoginAction" method="login">
+		</action>
+		
+		<action name="operLogout" class="com.yrtech.wx.capp.portal.action.LoginAction" method="logout">
+		</action>
+		
+		<action name="au_*" class="com.yrtech.wx.capp.portal.action.AuthAction" method="{1}">
+		</action>
+		
+		<action name="gd_*" class="com.yrtech.wx.capp.portal.action.GoodsAction" method="{1}">
+		</action>
+		
+		<action name="pc_*" class="com.yrtech.wx.capp.portal.action.ProvCityAction" method="{1}">
+		</action>
+		
+		<action name="bk_*" class="com.yrtech.wx.capp.portal.action.BankInfoAction" method="{1}">
+		</action>
+		
+		<action name="mer_*" class="com.yrtech.wx.capp.portal.action.MerInfoAction" method="{1}">
+		</action>
+		
+		<action name="usr_*" class="com.yrtech.wx.capp.portal.action.UserAction" method="{1}">
+		</action>
+		
+		<action name="ord_*" class="com.yrtech.wx.capp.portal.action.OrderAction" method="{1}">
+		</action>
+		
+		<action name="ha_*" class="com.yrtech.wx.capp.portal.action.HandleAuditAction" method="{1}">
+		</action>
+		
+		<action name="as_*" class="com.yrtech.wx.capp.portal.action.AcctSumAction" method="{1}">
+		</action>
+		
+	</package>
+	
+</struts>

@@ -1,0 +1,148 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ include file="/include/import.jsp"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>易收付商务管理控台</title>
+<%@ include file="/include/resources.jsp" %>
+
+</head>
+
+<body class="bg">
+	<div class="content">
+		<div class="main">
+			<img src="ui/images/bg02.jpg" width="1000" height="556"
+				alt="易收付商务管理控台" />
+		</div>
+		<div class="login">
+			<div class="logintop">登录账号</div>
+			<div class="sign">
+				<div id="errMsg" class="errMsg" ></div>
+				<div class="clear" />
+				
+				<div class="box">
+					<label for="bianhao" class="bianhao">商户编号：</label> 
+					<input id="merCode" name="merCode" class="loginp" value=""
+						type="text" onfocus="if(value==defaultValue){value='';}"
+						onblur="if(!value){value=defaultValue;}" maxlength="6"/>
+				</div>
+
+				<div class="box">
+					<label for="bianhao" class="bianhao">操作员号：</label> 
+					<input id="operCode" name="operCode" class="loginp" value=""
+						type="text" onfocus="if(value==defaultValue){value='';}"
+						onblur="if(!value){value=defaultValue;}"/>
+				</div>
+
+				<div class="box">
+					<label for="bianhao" class="bianhao">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
+					<input id="pwd" name="pwd" class="loginp" value=""
+						type="password" onfocus="if(value==defaultValue){value='';}"
+						onblur="if(!value){value=defaultValue;}"/>
+				</div>
+
+				<div class="box">
+					<label for="bianhao" class="bianhao">验&nbsp;&nbsp;证&nbsp;&nbsp;码：</label>
+					<input id="verifyCode" name="verifyCode" class="loginp" value=""
+						style="width:50px;" type="text"
+						onfocus="if(value==defaultValue){value='';}"
+						onblur="if(!value){value=defaultValue;}" maxlength="4"/> 
+					<img id="verimg" src="Security/SecurityCodeImageAction.action" width="90" height="33" style="margin-top:0px;cursor:pointer;vertical-align: middle;" alt="看不清楚，换张图片" onclick="loadImg();"/>
+				</div>
+
+				<input id="logbtn" name="login" class="bot" type="button" value="登&nbsp;&nbsp;&nbsp;录" onclick="login();"/><br />
+				<p>忘记密码？</p>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+
+</body>
+<script language="javascript" type="text/javascript">
+	$(document).ready(function() {
+		$("#errMsg").hide();
+		
+		document.onkeydown=function(event){ 
+	        e = event ? event :(window.event ? window.event : null); 
+	        if(e.keyCode==13){ 
+	        	login(); 
+	        } 
+	    };
+	})
+	
+	function loadImg(){
+		$("#verimg").attr("src", "Security/SecurityCodeImageAction.action?m="+Math.random());
+		$("#verifyCode").focus();
+		$("#verifyCode").val("");
+	}
+
+	function login() {
+		$("#errMsg").text("");
+		$("#errMsg").hide();
+		var merCode = $("#merCode").val(); 
+		var operCode = $("#operCode").val();
+		var pwd = $("#pwd").val();
+		var verifyCode = $("#verifyCode").val();
+		
+		if(isEmpty(merCode)){
+			$("#errMsg").text("请填写商户编号");
+			$("#errMsg").show();
+			return;
+		}
+		if(merCode.length != 6){
+			$("#errMsg").text("商户编号错误");
+			$("#errMsg").show();
+			return;
+		}
+		if(isEmpty(operCode)){
+			$("#errMsg").text("请填写用户姓名");
+			$("#errMsg").show();
+			return;
+		}
+		if(isEmpty(pwd)){
+			$("#errMsg").text("请填写密码");
+			$("#errMsg").show();
+			return;
+		}
+		if(isEmpty(verifyCode)){
+			$("#errMsg").text("请填写验证码");
+			$("#errMsg").show();
+			return;
+		}
+		if(verifyCode.length != 4){
+			$("#errMsg").text("请正确填写验证码");
+			$("#errMsg").show();
+			return;
+		}
+		
+		$("#logbtn").val("登录中...");
+		
+		var param = {};
+		param.merCode=merCode;
+		param.operCode=operCode;
+		param.pwd=pwd;
+		param.verifyCode=verifyCode;
+
+		var succCallBack=function(data){
+			if(data.retCode == "0000"){
+				window.location.href = "${ctx}/admin/main.action";
+			}else{
+				$("#errMsg").text(data.retMsg);
+				$("#errMsg").show();
+				loadImg();
+				$("#logbtn").val("登    录");
+			}
+		};
+		
+		var errCallBack = function(){
+			$("#errMsg").text("登陆失败");
+			$("#errMsg").show();
+			loadImg();
+			$("#logbtn").val("登    录");
+		};
+		
+		doAjaxRequest("${ctx}/console/operLogin.action", param, succCallBack, errCallBack);
+	}
+</script>
+</html>
