@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<!-- 国际化配置文件 -->
+	<constant name="struts.custom.i18n.resources" value="messageResource" />
+	<constant name="struts.i18n.encoding" value="UTF-8" /> 
+	<constant name="struts.multipart.maxSize" value="50971520009" />
+	<!-- 设置浏览器是否缓存静态内容,默认值为true(生产环境下使用),开发阶段最好关闭 
+	<constant name="struts.serve.static.browserCache" value="false" />
+	-->
+	<!-- 导入struts2 各模块文件 -->
+	<include file="strutsxml/struts_common.xml" />
+</struts>
